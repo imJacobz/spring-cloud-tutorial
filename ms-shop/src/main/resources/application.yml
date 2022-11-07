@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: nx-auto-ms-shop
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8989/eureka/
+
+feign:
+  circuitbreaker:
+    enabled: true
+
+
