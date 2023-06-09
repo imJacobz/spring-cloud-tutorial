@@ -1,29 +1,39 @@
 package com.jacobz.nxauto.shop.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jacobz.nxauto.entity.Customer;
 import com.jacobz.nxauto.entity.Shop;
+import com.jacobz.nxauto.model.ResponseData;
 import com.jacobz.nxauto.shop.service.CustomerService;
 import com.jacobz.nxauto.shop.service.MockShopService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class ShopController {
+
     private final CustomerService customerService;
     private final MockShopService mockShopService;
 
-    public ShopController(CustomerService customerService, MockShopService mockShopService) {
-        this.customerService = customerService;
-        this.mockShopService = mockShopService;
-    }
-
     @GetMapping("/shop/customer/{id}")
-    public List<Shop> showShopForCustomer(@PathVariable Integer id) {
-        String customerCity = customerService.getCustomerById(id).getCity();
-        return mockShopService.mockShops().stream()
+    public ResponseEntity<ResponseData> showShopForCustomer(@PathVariable Integer id) {
+        ResponseData responseData = customerService.getCustomerById(id);
+        // When you take responseData object, it's a LinkedHashMap, we use ObjectMapper to convert it.
+        Customer customer = new ObjectMapper().convertValue(responseData.get("data"), Customer.class);
+        String customerCity = customer.getCity();
+        List<Shop> shops = mockShopService.mockShops().stream()
                 .filter(shop -> shop.getCity().equalsIgnoreCase(customerCity)).toList();
+        return ResponseEntity.ok(new ResponseData().success().data(shops));
     }
 
 }

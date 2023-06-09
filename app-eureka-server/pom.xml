@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.jacobz</groupId>
         <artifactId>nx-auto</artifactId>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>app-eureka-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>war</packaging>
     <name>app-eureka-server</name>
     <description>app-eureka-server</description>

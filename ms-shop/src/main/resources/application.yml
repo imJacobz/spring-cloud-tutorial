@@ -1,16 +1,21 @@
 server:
   port: 8082
+
 spring:
   application:
     name: nx-auto-ms-shop
+  devtools:
+    livereload:
+      port: 35731
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8989/eureka/
 
-feign:
-  circuitbreaker:
-    enabled: true
 
 

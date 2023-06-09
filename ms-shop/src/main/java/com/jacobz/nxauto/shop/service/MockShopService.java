@@ -13,8 +13,8 @@ public class MockShopService {
         mockList.add(new Shop(1, "Gold Car", "AUSTIN"));
         mockList.add(new Shop(2, "Gold Car", "DALLAS"));
         mockList.add(new Shop(3, "Car Fox", "AUSTIN"));
-        mockList.add(new Shop(4, "Los Santos Car Maker", "AUSTIN"));
-        mockList.add(new Shop(5, "Los Santos Car Maker", "DALLAS"));
+        mockList.add(new Shop(4, "Los Santos Customize", "AUSTIN"));
+        mockList.add(new Shop(5, "Los Santos Customize", "DALLAS"));
         return mockList;
     }
 }
