@@ -8,7 +8,6 @@
         <module>ms-customer</module>
         <module>ms-shop</module>
         <module>app-gateway</module>
-        <module>app-authentication</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
